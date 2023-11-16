@@ -160,8 +160,9 @@ var movePage = function (pageNo) {
     }
     document.getElementById('searchForm').action = '';
     document.getElementById('searchForm').method = 'get';
-
+	alert("asd");
     document.getElementById('searchForm').submit();
+	alert("asdf");
 }
 
 //팝업형 페이지 이동
@@ -359,7 +360,6 @@ var postAjaxForm = function (formId, url, callback, failCallback) {
 };
 
 const newPost = function (option, callback, failCallback,cCallback) {
-
     if (option.duplicate == undefined) {
         // false : 중복 방지해야 함.
         // true : 중복 허용 해야 함.
@@ -373,7 +373,6 @@ const newPost = function (option, callback, failCallback,cCallback) {
     var duplicateValue = option.duplicate ? getUUID() : sessionId + option.url + encodeURIComponent(JSON.stringify(option.data));
 
     option.data["__duplicate__"] = MD5(duplicateValue) + "UUID";
-
     $.ajax({
 
         url: option.url,
@@ -385,7 +384,6 @@ const newPost = function (option, callback, failCallback,cCallback) {
         beforeSend:()=> $('#loading').modal('show'),
         success:
             function (response) {
-
                 $('#loading').modal('hide')
 
                 try {
@@ -409,9 +407,7 @@ const newPost = function (option, callback, failCallback,cCallback) {
                     callback(response);
 
                     $("#popupDialogContent").load(response.POPUP_URL, function () {
-
-                        $(".ui-dialog-title").text(response.POPUP_NAME)					
-
+                        $(".ui-dialog-title").text(response.POPUP_NAME)
                         $('.popup').dialog('open');
                     });
                 } else if (response.RESULT_ST == "FAIL") {
@@ -420,7 +416,6 @@ const newPost = function (option, callback, failCallback,cCallback) {
 
 
             },
-
         fail: failCallback,
         complete: cCallback
     });

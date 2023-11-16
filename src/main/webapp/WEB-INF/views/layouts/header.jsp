@@ -33,7 +33,7 @@
 						<a href="/product/box/boxlist.do">택배배송</a>
 					</li>
 					<li>
-						<a href="/customer/product/product.do">맞춤큐레이션</a>
+						<a href="/customer/product">맞춤큐레이션</a>
 					</li>
 					<li>
 						<a href="/taste/taste">시음선물</a>
@@ -47,13 +47,8 @@
 				</ul>
 			</nav>
 		</div>
-
 		<div class="member-search-area">
 			<div class="head-util-area">
-
-				<a href="/mypage" data-require-login="true"> <i
-					class="ico ico-myIcon"></i> <span class="hide">로그인 페이지 / 마이 페이지로 가기</span>
-
 				<u:isLogin>
 					<p class="welcome">
 						<b style="margin: 0;"><c:out value="${ auth.getName() }" /> <a href="/member/logout.do" type="button" class="logout-btn">로그아웃</a></b>님, 건강한 습관 풀무원녹즙입니다.
@@ -64,7 +59,10 @@
 				<u:notLogin>
 <!-- 					<a href="/member/login.do">로그인 버튼(임시)</a>				 -->
 				</u:notLogin>
-
+				<a href="/mypage.do" data-require-login="true"> 
+					<i class="ico ico-myIcon"></i>
+					<span class="hide">로그인 페이지 / 마이 페이지로 가기</span>
+				</a>
 				 <a href="/cart/daily">
 					<div class="counter hide" data-cart-size=""></div> <i class="ico ico-cart1"></i> <span class="hide">장바구니로 가기</span>
 				</a>
@@ -222,7 +220,7 @@
 			<div class="sub-link">
 				<div>
 					<b>맞춤큐레이션</b>
-					<a href="/customer/product/product.do" title="해당 페이지로 가기">간단한 질문에 답하면 고객 맞춤 상품을 추천드려요
+					<a href="/customer/product" title="해당 페이지로 가기">간단한 질문에 답하면 고객 맞춤 상품을 추천드려요
 						<i class="ico ico-arr-right6"></i>
 					</a>
 				</div>

@@ -16,13 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import mvc.command.CommandHandler;
 import mvc.command.NullHandler;
 
-public class ControllerUsingURI extends HttpServlet{
+public class ControllerUsingURI extends HttpServlet {
 
-	   /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	// <커맨드, 핸들러인스턴스> 매핑 정보 저장
+    // <커맨드, 핸들러인스턴스> 매핑 정보 저장
     private Map<String, CommandHandler> commandHandlerMap = 
     		new HashMap<>();
 
