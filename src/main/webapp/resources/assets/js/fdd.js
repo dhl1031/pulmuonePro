@@ -76,10 +76,11 @@ function addCartToServer(type, data, eventIdx) {
 
   axios.post(`/product_available`, { ids: codes }).then(function (r) {
     var o = r.data.RESULT_MSG;
+	
     var lockIds = o.fails.map(x => x.itemCode);
-    var target = data.filter(x => lockIds.indexOf(x.itemCode) < 0);
+    var target = data.filter(x => lockIds.indexOf(x.itemCode) < 0);         
 
-    axios.post('/cart/save', {[type]: target, eventIdx}).then(function ({data}) {
+    axios.post('/cart/save.do', {[type]: target, eventIdx}).then(function ({data}) {
       if (o.fails.length) {
         var nextDisabled = o.fails.length >= codes.length;
         showNotAvailModal(o.fails, nextDisabled ? undefined : function () {
@@ -167,7 +168,7 @@ function addLike(type, itemCode, options) {
       if (elem.is("input")) {
         if (elem.data("listener")) return;
 
-        console.log("!!!! ", el);
+//        console.log("!!!! ", el);
 
         var clone = elem.clone();
         clone.attr("name", "_x_" + clone.attr("name"));
@@ -394,12 +395,11 @@ let timer;
     })
   };
 
-  window.confirmDesign = function (title, message, callback, option) {
+  window.confirmDesign = function (title, message, callback, option) {	
     const body = {
         title: !message ? '' : title,
       content: !message ? title : message,
     };
-
     $("#confirmModal .modal-title").html(body.title);
     $("#confirmModal .modal-body").html(body.content);
     $("#confirmModal").modal('show');
@@ -455,7 +455,7 @@ let timer;
 //      if (!data.ok) {
 //        return;
 //      }	
-      console.log(that, that.hasClass("active"))
+
       if (!that.hasClass("active")) {
         $("[data-wish-type][data-wish-id='" + id + "']").addClass('active');
         alert("찜한상품에 담겼습니다.");
@@ -477,12 +477,12 @@ let timer;
   $(document).on("click", "[data-product-preview]", function (e) {
     var that = $(this);
     var id = parseInt(that.attr("data-product-preview"), 10);
+	
     if (id) {
       $("#productPreviewModal .modal-content").html("");
       $("#productPreviewModal").addClass("loading").modal('show');
 
       $("#productPreviewModal .modal-content").load("/product/preview/modalview.do?num=" + id, function () {
-
         $("#productPreviewModal").removeClass("loading");
       });
     }
@@ -490,8 +490,10 @@ let timer;
     return false;
   });
 
-  window.shareToKakao = function (title, uri) {
-    if (window.kakaoShareData) {
+  window.shareToKakao = function (title, uri) {	
+    if (window.kakaoShareData) {	
+		console.log(window.kakaoShareData.key);
+	console.log(window.kakaoShareData.data);		
       Kakao.Share.sendCustom({
         templateId: window.kakaoShareData.key,
         templateArgs: window.kakaoShareData.data,

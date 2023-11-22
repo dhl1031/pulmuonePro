@@ -5,33 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>풀무원 녹즙</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="shortcut icon" type="image/x-icon"
-	href="/resources/assets/images/pul_favicon.png">
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
-	rel="stylesheet">
-<script src="/resources/assets/js/jquery-2.1.4.min.js"></script>
-<script src="/resources/assets/js/jquery.form.min.js"></script>
-<script src="/resources/assets/js/design.js"></script>
-<link rel="stylesheet" href="/resources/assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="/resources/assets/css/bootstrap-fdd.css">
-<script src="/resources/assets/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="/resources/assets/js/clipboard.min.js"></script>
-<script src="/resources/assets/js/fdd.js"></script>
-<script src="/resources/assets/js/request.js"></script>
-<link rel="stylesheet" href="/resources/assets/css/owl.carousel.min.css">
-<link rel="stylesheet"
-	href="/resources/assets/css/owl.theme.default.css">
-<script src="/resources/assets/js/owl.carousel.min.js"></script>
-<link rel="stylesheet" href="/resources/assets/css/proview.css">
-<link rel="stylesheet" href="/resources/assets/css/list.css">
-<link rel="stylesheet" href="/resources/assets/css/style.css">
-</head>
+<%@ include file="/WEB-INF/views/layouts/head.jsp"%>
 <body>
 	<script>
 	var formatter = new Intl.NumberFormat();
@@ -58,7 +32,7 @@
         $('input[name=coupon]').click(function () {
             const li = $(this).closest('li');
             li.toggleClass('active', this.checked)
-            const data = li.data('prop')
+            const data = li.data('prop')            
             const ul = $(this).closest('ul');
 
             var currentAmt = parseInt('');
@@ -183,7 +157,6 @@
 			}
 		});
 		//endregion
-
 		//region 바로 구매
 		$("#orderBtn").click(function () {
 			if (itemType != "daily") {
@@ -209,7 +182,6 @@
 				const dayQty = days.map(function (x, i) {
 					return selectedDays.includes(i) ? 1 : 0;
 				});
-
 				window.orderProcess({ item: [{itemCode, dayQty}] });
 			} else {
 				// 추천 패키지 선택 시
@@ -240,31 +212,20 @@
 		});
 		//endregion
 	});
-
-	var data = {"feature":"\u003cp\u003e\u003cimg src\u003d\"/editor/download/5403\" title\u003d\"비타맥스엑스투(1140).png\" class\u003d\"8d4e7339-2e48-4c36-9cd8-6fe8e5bab379.png\"\u003e\u003cbr style\u003d\"clear:both;\"\u003e\u0026nbsp;\u003c/p\u003e\u003cp\u003e\u003cspan style\u003d\"font-size: 18.6667px;\"\u003e\u003cb\u003e\r\n\r\n\u003c/b\u003e\u003c/span\u003e\u003c/p\u003e\u003cdiv style\u003d\"text-align: center;\" align\u003d\"center\"\u003e\u003cb\u003e\u003cb style\u003d\"font-size: 16px;\"\u003e\u003cb style\u003d\"text-indent: 0in; font-size: 12px;\"\u003e\u003cspan style\u003d\"font-size: 36pt;\"\u003e\u003cbr\u003e\u003c/span\u003e\u003c/b\u003e\u003c/b\u003e\u003c/b\u003e\u003c/div\u003e\u003cdiv style\u003d\"text-align: center;\" align\u003d\"center\"\u003e\u003cb\u003e\u003cb style\u003d\"font-size: 16px;\"\u003e\u003cb style\u003d\"text-indent: 0in; font-size: 12px;\"\u003e\u003cspan style\u003d\"font-size: 36pt;\"\u003e제품 구성\u003c/span\u003e\u003c/b\u003e\u003c/b\u003e\u003cb style\u003d\"font-size: 16px;\"\u003e\u003cb style\u003d\"text-indent: 0in; font-size: 12px;\"\u003e\u003cspan style\u003d\"font-size: 36pt;\"\u003e\u0026nbsp;\u003c/span\u003e\u003c/b\u003e\u003c/b\u003e\u003c/b\u003e\u003c/div\u003e\u003cdiv style\u003d\"text-align: center;\" align\u003d\"center\"\u003e\u003cb\u003e\u003cb style\u003d\"font-size: 16px;\"\u003e\u003cb style\u003d\"text-indent: 0in; font-size: 12px;\"\u003e\u003cspan style\u003d\"font-size: 36pt;\"\u003e\u003cimg src\u003d\"/editor/download/5404\" title\u003d\"비타맥스엑스투.png\" class\u003d\"51c56f1d-2b05-4243-8951-89256480522f.png\"\u003e\u003c/span\u003e\u003c/b\u003e\u003c/b\u003e\u003c/b\u003e\u003c/div\u003e\u003cdiv style\u003d\"text-align: center;\" align\u003d\"center\"\u003e\u003cb\u003e\u003cb style\u003d\"font-size: 16px;\"\u003e\u003cb style\u003d\"text-indent: 0in; font-size: 12px;\"\u003e\u003cspan style\u003d\"font-size: 36pt; color: rgb(0, 0, 0);\"\u003e제품 정보 및 주의사항\u003c/span\u003e\u003c/b\u003e\u003c/b\u003e\u003c/b\u003e\u003c/div\u003e\u003cdiv style\u003d\"text-align: center;\" align\u003d\"center\"\u003e\u003cb\u003e\u003cb style\u003d\"font-size: 16px;\"\u003e\u003cb style\u003d\"text-indent: 0in; font-size: 12px;\"\u003e\u003cspan style\u003d\"font-size: 36pt;\"\u003e\u003cimg src\u003d\"/editor/download/5405\" title\u003d\"비타맥스엑스투.png\" class\u003d\"c424f176-361e-43f5-acee-1c4c59623bdb.png\"\u003e\u003c/span\u003e\u003c/b\u003e\u003c/b\u003e\u003c/b\u003e\u003c/div\u003e","featureMobile":"\u003cp\u003e\u003cimg src\u003d\"/editor/download/5403\" title\u003d\"비타맥스엑스투(1140).png\" class\u003d\"8d4e7339-2e48-4c36-9cd8-6fe8e5bab379.png\"\u003e\u003cbr style\u003d\"clear:both;\"\u003e\u0026nbsp;\u003c/p\u003e\u003cp\u003e\u003cspan style\u003d\"font-size: 18.6667px;\"\u003e\u003cb\u003e\r\n\r\n\u003c/b\u003e\u003c/span\u003e\u003c/p\u003e\u003cdiv style\u003d\"text-align: center;\" align\u003d\"center\"\u003e\u003cb\u003e\u003cb style\u003d\"font-size: 16px;\"\u003e\u003cb style\u003d\"text-indent: 0in; font-size: 12px;\"\u003e\u003cspan style\u003d\"font-size: 36pt;\"\u003e\u003cbr\u003e\u003c/span\u003e\u003c/b\u003e\u003c/b\u003e\u003c/b\u003e\u003c/div\u003e\u003cdiv style\u003d\"text-align: center;\" align\u003d\"center\"\u003e\u003cb\u003e\u003cb style\u003d\"font-size: 16px;\"\u003e\u003cb style\u003d\"text-indent: 0in; font-size: 12px;\"\u003e\u003cspan style\u003d\"font-size: 36pt;\"\u003e제품 구성\u003c/span\u003e\u003c/b\u003e\u003c/b\u003e\u003cb style\u003d\"font-size: 16px;\"\u003e\u003cb style\u003d\"text-indent: 0in; font-size: 12px;\"\u003e\u003cspan style\u003d\"font-size: 36pt;\"\u003e\u0026nbsp;\u003c/span\u003e\u003c/b\u003e\u003c/b\u003e\u003c/b\u003e\u003c/div\u003e\u003cdiv style\u003d\"text-align: center;\" align\u003d\"center\"\u003e\u003cb\u003e\u003cb style\u003d\"font-size: 16px;\"\u003e\u003cb style\u003d\"text-indent: 0in; font-size: 12px;\"\u003e\u003cspan style\u003d\"font-size: 36pt;\"\u003e\u003cimg src\u003d\"/editor/download/5404\" title\u003d\"비타맥스엑스투.png\" class\u003d\"51c56f1d-2b05-4243-8951-89256480522f.png\"\u003e\u003c/span\u003e\u003c/b\u003e\u003c/b\u003e\u003c/b\u003e\u003c/div\u003e\u003cdiv style\u003d\"text-align: center;\" align\u003d\"center\"\u003e\u003cb\u003e\u003cb style\u003d\"font-size: 16px;\"\u003e\u003cb style\u003d\"text-indent: 0in; font-size: 12px;\"\u003e\u003cspan style\u003d\"font-size: 36pt; color: rgb(0, 0, 0);\"\u003e제품 정보 및 주의사항\u003c/span\u003e\u003c/b\u003e\u003c/b\u003e\u003c/b\u003e\u003c/div\u003e\u003cdiv style\u003d\"text-align: center;\" align\u003d\"center\"\u003e\u003cb\u003e\u003cb style\u003d\"font-size: 16px;\"\u003e\u003cb style\u003d\"text-indent: 0in; font-size: 12px;\"\u003e\u003cspan style\u003d\"font-size: 36pt;\"\u003e\u003cimg src\u003d\"/editor/download/5405\" title\u003d\"비타맥스엑스투.png\" class\u003d\"c424f176-361e-43f5-acee-1c4c59623bdb.png\"\u003e\u003c/span\u003e\u003c/b\u003e\u003c/b\u003e\u003c/b\u003e\u003c/div\u003e","nutrition":"{\"foodType\":{\"label\":\"식품의 유형\",\"value\":\"상세 참조\",\"sort\":1},\"producer\":{\"label\":\"제조업소의 명칭과 소재지\",\"value\":\"상세 참조\",\"sort\":2},\"expirationDate\":{\"label\":\"제조연월일/유통기한\",\"value\":\"상세 참조\",\"sort\":3},\"packagingCapacity\":{\"label\":\"용량\",\"value\":\"상세 참조\",\"sort\":4,\"unit\":\"ml\"},\"packagingQty\":{\"label\":\"수량\",\"value\":\"상세 참조\",\"sort\":5},\"material\":{\"label\":\"원재료 및 함량\",\"value\":\"상세 참조\",\"sort\":6},\"nutrition\":{\"label\":\"영양정보\",\"value\":\"상세 참조\",\"sort\":7},\"nutritionFeature\":{\"label\":\"영양정보\",\"value\":\"상세 참조\",\"sort\":8},\"intakeType\":{\"label\":\"섭취량,섭취방법 및 섭취시 주의사항 및 부작용 가능성\",\"value\":\"상세 참조\",\"sort\":9},\"preventiveMedicine\":{\"label\":\"질병의 예방 및 치료를 위한 의약품이 아니라는 내용의 표현\",\"value\":\"해당 사항 없음\",\"sort\":9},\"geneticallyModifiedFood\":{\"label\":\"유전자변형건강기능식품에 해당하는 경우의 표시\",\"value\":\"해당 사항 없음\",\"sort\":11},\"importedFoodYn\":{\"label\":\"수입신고여부\",\"value\":\"해당 사항 없음\",\"sort\":13},\"consumerSafety\":{\"label\":\"소비자안전을 위한 주의사항\",\"value\":\"상세 참조\",\"sort\":12},\"csCallNum\":{\"label\":\"소비자 상담번호\",\"value\":\"080-800-0393\",\"sort\":14}}","detailImage1":"/product/20231101/d13025a6-2fe5-40d6-9d25-90c06e7bde0c.png","limitSize":-1,"totalCount":0,"idx":743,"goodType":"DAILY","itemCode":"0074095","thumbnail":"/product/20231101/b7323a61-8792-488b-9a32-571fe276bcea.png","productName":"비타맥스 엑스투","readNum":"1180","capacity":"137","unit":"g","price":"3500","isNew":"Y","interestIdx":0,"slogan":"한국인을 위한 멀티비타민\u0026미네랄 정제와 유기농 과채한가득 녹즙을 한 번에","freebYn":"Y","freebSloganYn":"N","freebQty":1,"isIce":"Y","unitBox":"포","pkgIdx":0};
-	if (data.price) {
-		data.price = data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	}
-	if (data.thumbnail) {
-		data.thumbnail = location.origin + "/file/download" + data.thumbnail;
-	}
-	if (data.detailImage1) {
-		data.detailImage1 = location.origin + "/file/download" + data.detailImage1;
-	}
-
-	window.kakaoShareData = {
-		key: 84344,
+	
+	window.kakaoShareData = {		
+		key: 100891,
 		data: {
-			mobilehost: "https://mgreenjuice.pulmuone.com/",
-			webhost: "https://greenjuice.pulmuone.com/",
-			detailImage1: data.detailImage1,
-			weight: "137g",
-			path: location.pathname,
-			productName: data.productName,
-			slogan: data.slogan,
-			thumbnail: data.thumbnail,
-			price: data.price,
-		}
+			mobilehost: "http://localhost",
+			webhost: "http://localhost/",
+			detailImage1: location.origin+ "/file/download"+'/product/${dto.system_name}',			
+			weight: "${dto.products_size}",
+			path: "product/daily/view.do?tag=${dto.products_tag}",
+			productName: "${dto.products_name}",
+			slogan: "${dto.products_sub_name}",
+			thumbnail: location.origin+ "/file/download"+'/product/${dto.system_name}',
+			price: "<fmt:formatNumber value="${dto.price }" pattern="#,###" />",
+		}	
 	};
 
 
@@ -291,7 +252,7 @@
 
 	function calculateBoxPrice() {
 		const qty = $('.box-qty').text()
-		const price = '3500'
+		const price = '${dto.price}'
 		$('#totalPrice b').text(formatter.format(qty * price))
 
 	}
@@ -305,7 +266,7 @@
                     $('input[name=c1]').removeAttr('disabled');
                     $('.check-list').find('input[type=checkbox]:not(:checked)').click()
                     const cnt = $('input[name=c1]:checked').length
-                    const price = '3500'
+                    const price = '${dto.price}'
                     totalPrice = cnt * price * 4;
 
                 } else {
@@ -319,7 +280,7 @@
         $('input[name=c1]').change(function () {
             if ($("input[name=r1]:checked").hasClass('none-package')) {
                 const cnt = $('input[name=c1]:checked').length
-                const price = '3500'
+                const price = '${dto.price}'
                 $("#totalPrice b").text(formatter.format(cnt * price * 4));
             }
         })    
@@ -368,7 +329,7 @@
     $("#orderModal ul").html("");
     $("#orderModal").addClass("loading").modal("show");
 
-    axios.post(`/product_available`, { ids: codes }).then(function (r) {
+    axios.post(`/product_available.do`, { ids: codes }).then(function (r) {
       var o = r.data.RESULT_MSG;
       if (o.fails.length) {
         var itemCodes = o.fails.map(v => v.itemCode);
@@ -478,16 +439,16 @@
 				<div class="container">
 					<div class="product-info-area">
 						<div class="thumb-area">
-							<c:forEach var="dto" items="${list }" end="0">
-								<div class="main-thumb">									
-										<img src="/file/download/product/${dto.system_name }">									
+							<c:forEach var="dao" items="${list }" end="0">
+								<div class="main-thumb">
+									<img src="/file/download/product/${dao.system_name }">
 								</div>
 							</c:forEach>
 							<ul class="sub-thumb">
-								<c:forEach var="dto" items="${list }" end="4">
+								<c:forEach var="dao" items="${list }" end="4">
 									<li class="active">
-										<button type="button" class="item">											
-												<img src="/file/download/product/${dto.system_name }">											
+										<button type="button" class="item">
+											<img src="/file/download/product/${dao.system_name }">
 										</button>
 									</li>
 								</c:forEach>
@@ -499,9 +460,9 @@
 							</div>
 							<div style="height: 6px"></div>
 							<div class="prd-detail-title-area">
-								<div style="flex: 1; padding-right: 10px">									
-										<h2>${dto.products_name }</h2>
-										<p>${dto.products_sub_name }</p>
+								<div style="flex: 1; padding-right: 10px">
+									<h2>${dto.products_name }</h2>
+									<p>${dto.products_sub_name }</p>
 								</div>
 								<button data-toggle="modal" data-target="#shareModal"
 									type="button" class="ellipse-button primary"
@@ -512,12 +473,12 @@
 							<div class="product-addiction">
 								<div class="price-item">
 									<span style="padding-right: 12px; font-size: 22px;">
-										(원산지 :상품상세 참조) </span>								
-										<p>
-											<fmt:formatNumber value="${dto.price }" pattern="#,###" />
-											<span>원</span>
-										</p>
-										<span>(${dto.products_size })</span>
+										(원산지 :상품상세 참조) </span>
+									<p>
+										<fmt:formatNumber value="${dto.price }" pattern="#,###" />
+										<span>원</span>
+									</p>
+									<span>(${dto.products_size })</span>
 								</div>
 							</div>
 							<div class="buy-option">
@@ -699,7 +660,6 @@
 											<button style="width: 100%;"
 												class="button-basic border package-more">더보기</button>
 										</div>
-
 									</div>
 								</div>
 							</div>
@@ -717,10 +677,8 @@
 				</div>
 			</div>
 			<!-- Tab panes -->
-			<div class="tab-content">
-			${dto.content }
-			</div>
-			<a class="faq-product" href="/forum/faq">
+			<div class="tab-content">${dto.content }</div>
+			<a class="faq-product" href="/forum/faq/list.do">
 				<div class="container">
 					<h2 class="part-title">FAQ</h2>
 					<p>자주 묻는 질문입니다.</p>
@@ -733,18 +691,27 @@
 							<span>4주 예상 주문 금액</span>
 							<p id="totalPrice" class="price"
 								style="margin-left: 39px; margin-bottom: 8px">
-								<b>70,000</b><span>원</span>
+								<b></b><span>원</span>
 							</p>
 						</div>
 					</div>
 					<div class="button-set"
-						style="margin-right: -4px; margin-bottom: 7px">
-						<button class="button-fix interest-button " data-wish-type="daily"
-							data-wish-id="743"></button>
+						style="margin-right: -4px; margin-bottom: 7px">						
+						<c:choose>
+							<c:when test="${dto.wish_status eq 1 }">
+								<button class="button-fix interest-button  active"
+									data-wish-type="box" data-wish-id="${dto.products_tag }"></button>
+							</c:when>
+							<c:otherwise>
+								<button class="button-fix interest-button " data-wish-type="box"
+									data-wish-id="${dto.products_tag }"></button>
+							</c:otherwise>
+						</c:choose>
 						<!-- 품절용 가이드 추가 -->
+						<button id="cartBtn" class="button-fix black">장바구니</button>
 						<form action="/daily/order/step1.do" method="GET">
-					        <input type="hidden" name="item" value='{"item":[{"itemCode":"0071654","dayQty":[1,1,1,1,1]}]'>
-							<button id="cartBtn" class="button-fix black">장바구니</button>
+							<input type="hidden" name="item"
+								value='{"item":[{"itemCode":"${dto.products_no }","dayQty":[1,1,1,1,1]}]'>
 							<button id="orderBtn" class="button-fix primary">바로구매</button>
 						</form>
 
@@ -754,7 +721,7 @@
 			</div>
 		</main>
 		<%@ include file="/WEB-INF/views/layouts/footer.jsp"%>
-
+		<%@ include file="/WEB-INF/views/ui/kakaomodal.jsp"%>
 	</div>
 </body>
 </html>

@@ -12,9 +12,9 @@
                 <div class="wrap">
                     <ul>
                         <li><a href="/">홈</a></li>
-                        <li><a href="">MY녹즙</a></li>
-                        <li><a href="">활동정보</a></li>
-                        <li><a class="active">1:1 문의</a></li>
+                        <li><a href="/mypage.do">MY녹즙</a></li>
+                        <li><a href="/mypage/product/list.do">활동정보</a></li>                        
+                        <li><a class="active" href="/mypage/inquiry/list.do">1:1 문의</a></li>
                     </ul>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                            </div>
                        </div>
 
-                       <div class="board-content answer">
+                       <div class="board-content answer" style="display: none;">
                            <span class="ellipse">A.</span>
                            <div class="content">
                                <p>안녕하세요. 고객님. 하루 한 병 건강한 습관 풀무원녹즙입니다.

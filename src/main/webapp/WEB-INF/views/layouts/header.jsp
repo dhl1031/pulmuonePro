@@ -3,6 +3,21 @@
 <%@ taglib prefix="u" tagdir="/WEB-INF/tags" %>
 <!-- header -->
 <header id="header">
+<%-- <%@ page import="auth.AuthInfo" %>
+<%
+    AuthInfo authInfo = (AuthInfo) session.getAttribute("auth");
+    String loginInfo;
+    if (authInfo == null) {
+        // 로그인 상태가 아님
+        loginInfo = "null";
+    } else {
+        // 로그인 상태임
+        loginInfo = "회원번호: " + authInfo.getMemberNo() + ", 회원ID: " + authInfo.getMemberId() + ", 이름: " + authInfo.getName();
+    }
+%>
+<p><%= loginInfo %></p> --%>
+
+
    <div class="container">
       <div class="logo-gnb-area">
          <!-- logo -->
@@ -36,7 +51,7 @@
                   <a href="/customer/product/product.do">맞춤큐레이션</a>
                </li>
                <li>
-                  <a href="/taste/taste">시음선물</a>
+                  <a href="/taste/taste.do">시음선물</a>
                </li>
                <li>
                   <a href="/event/event/list.do">이벤트</a>
@@ -52,18 +67,17 @@
             <u:isLogin>
                <p class="welcome">
                   <b style="margin: 0;"><c:out value="${ auth.getName() }" /> <a href="/member/logout.do" type="button" class="logout-btn">로그아웃</a></b>님, 건강한 습관 풀무원녹즙입니다.
-<%--                   <b style="margin: 0;"> <a href="/member/logout.do" type="button" class="logout-btn">로그아웃</a></b>님, 건강한 습관 풀무원녹즙입니다. --%>
                </p>
             </u:isLogin>
             <a href="/mypage.do" data-require-login="true"> 
                <i class="ico ico-myIcon"></i>
                <span class="hide">로그인 페이지 / 마이 페이지로 가기</span>
             </a>
-             <a href="/cart/daily">
+             <a href="/cart/daily.do">
                <div class="counter hide" data-cart-size=""></div> <i class="ico ico-cart1"></i> <span class="hide">장바구니로 가기</span>
             </a>
          </div>
-         <form class="search-area" action="/product/search">
+         <form class="search-area" action="/product/search.do">
             <input type="text" id="" name="searchKeyword" value="" title="검색어 입력">
             <button>
                <i class="ico ico-srh1"></i>
@@ -152,23 +166,23 @@
                <ul>
                   
                   <li>
-                     <a href="/event/event" title="해당 페이지로 가기">진행중인 이벤트</a>
+                     <a href="/event/event/list.do" title="해당 페이지로 가기">진행중인 이벤트</a>
                   </li>
                   
                   <li>
-                     <a href="/event/event/end" title="해당 페이지로 가기">종료된 이벤트</a>
+                     <a href="/event/event/end/list.do" title="해당 페이지로 가기">종료된 이벤트</a>
                   </li>
                   
                   <li>
-                     <a href="/event/event/winner" title="해당 페이지로 가기">당첨자 발표</a>
+                     <a href="/event/winner.do" title="해당 페이지로 가기">당첨자 발표</a>
                   </li>
                   
                   <li>
-                     <a href="/event/event/view/2394" title="해당 페이지로 가기">친구초대</a>
+                     <a href="/event/event/view.do?event_no=2" title="해당 페이지로 가기">친구초대</a>
                   </li>
                   
                   <li>
-                     <a href="/event/event/view/2757" title="해당 페이지로 가기">회원혜택</a>
+                     <a href="/event/event/view.do?event_no=25" title="해당 페이지로 가기">회원혜택</a>
                   </li>
                   
                </ul>
@@ -179,11 +193,11 @@
                <ul>
                   
                   <li>
-                     <a href="/info/foundation" title="해당 페이지로 가기">가맹점 개설안내</a>
+                     <a href="/info/foundation.do" title="해당 페이지로 가기">가맹점 개설안내</a>
                   </li>
                   
                   <li>
-                     <a href="/info/business" title="해당 페이지로 가기">모닝스탭 안내</a>
+                     <a href="/info/business.do" title="해당 페이지로 가기">모닝스탭 안내</a>
                   </li>
                   
                </ul>
@@ -194,35 +208,34 @@
                <ul>
                   
                   <li>
-                     <a href="/forum/faq?category=top10" title="해당 페이지로 가기">FAQ</a>
+                     <a href="/forum/faq/list.do" title="해당 페이지로 가기">FAQ</a>
                   </li>
                   
                   <li>
-                     <a href="/forum/action/counsel/write" title="해당 페이지로 가기">1:1 문의</a>
+                     <a href="/forum/inquiry/write.do" title="해당 페이지로 가기">1:1 문의</a>
                   </li>
                   
                   <li>
-                     <a href="/forum/notice" title="해당 페이지로 가기">공지사항</a>
+                     <a href="/forum/notice/list.do" title="해당 페이지로 가기">공지사항</a>
                   </li>
                   
                   <li>
-                     <a href="/search/branch" title="해당 페이지로 가기">배송가능지역 검색</a>
+                     <a href="/forum/franchise/search.do" title="해당 페이지로 가기">배송가능지역 검색</a>
                   </li>
                   
                </ul>
-            </li>
-            
+            </li>            
          </ol>
          <div class="sub-link">
             <div>
                <b>맞춤큐레이션</b>
-               <a href="/customer/product" title="해당 페이지로 가기">간단한 질문에 답하면 고객 맞춤 상품을 추천드려요
+               <a href="/customer/product/product.do" title="해당 페이지로 가기">간단한 질문에 답하면 고객 맞춤 상품을 추천드려요
                   <i class="ico ico-arr-right6"></i>
                </a>
             </div>
             <div>
                <b class="fc-green">시음선물</b>
-               <a href="/taste/taste" title="해당 페이지로 가기" class="fc-green">친구 또는 나에게 녹즙 시음을 선물해 보세요
+               <a href="/taste/taste.do" title="해당 페이지로 가기" class="fc-green">친구 또는 나에게 녹즙 시음을 선물해 보세요
                   <i class="ico ico-arr-right5"></i>
                </a>
             </div>
@@ -236,9 +249,9 @@
 </header>
 <script type="text/javascript">
    $('.logout-btn').click(function (){
-       if(confirm('로그아웃 하시겠습니까?')){
-   
-       }
+//        if(confirm('로그아웃 하시겠습니까?')){
+   			
+//        }
    })
    $(document).ready(function(){
        $('.welcome b').hover(function() {

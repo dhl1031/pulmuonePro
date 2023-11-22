@@ -32,9 +32,11 @@ public class ProductsDTO {
 	   private Date reg_date;         // 등록날
 	   private String event_tag;         // 상품이벤트태그
 	   private String event_tag2;         // 상품이벤트태그
-	   
+	   private int idx;         // 찜하기 삭제
+	   private String wish_status; // 찜 상태
 	   
 	   private String system_name;         // 이미지
 	   private String origin_name;         // 이미지
+	   
 	   
 }

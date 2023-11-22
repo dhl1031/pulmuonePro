@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"	id="WebApp_ID" version="3.1">
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"           
+               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+               version="3.1">
 	<display-name>pulmuonePro</display-name>
-	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
+	<welcome-file-list>		
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-
+  <error-page>
+	<error-code>404</error-code>
+	<location>/default.jsp</location>
+  </error-page>
+    <error-page>
+	<error-code>500</error-code>
+	<location>/default.jsp</location>
+  </error-page>
 	<!-- p 415 커넥션풀을 사용하기 위해서 설정한 코딩. -->
 	<resource-ref>
 		<description>Oracle Datasource example</description>
@@ -73,6 +77,8 @@
 	</servlet-mapping>
 
 
+
+
 	<jsp-config>
 		<jsp-property-group>
 			<!-- 코드를 붙일 페이지들의 url 패턴 -->
@@ -101,6 +107,9 @@
 		<url-pattern>/box/order/step1.do</url-pattern>
 		<url-pattern>/daily/order/step1.do</url-pattern>
 		<url-pattern>/taste/order/step1.do</url-pattern>
+		<url-pattern>/event/comment/write.do</url-pattern>
+		<url-pattern>/mypage/personal/refund.do</url-pattern>
+		<url-pattern>/member/quit.do</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
 
