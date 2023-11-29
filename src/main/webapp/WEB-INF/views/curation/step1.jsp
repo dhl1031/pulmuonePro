@@ -170,7 +170,6 @@
 							</div>
 						</div>
 					</div>
-
 				<script>
 
 //체크박스 선택 없으면 모달창
@@ -196,4 +195,4 @@ $("#nextPage").on("click", function() {
 		<%@ include file="/WEB-INF/views/ui/footermodal.jsp"%>
 	</div>
 </body>
-</html>
+</html>	
